@@ -1,0 +1,64 @@
+<?php
+if (isset($_POST['bouton'])) {
+    if (NomRobot($_POST['rname'])) {
+        $name = NomRobot($_POST['rname']);
+        $moralite = Moralite((isset($_POST['moralite'])) ? $_POST['moralite'] : '');
+        $tirage = Tirage();
+        $Daydate = DonneDate();
+        $comedie = Comedie($name, (isset($_POST['moralite'])) ? $_POST['moralite'] : '');
+    } else {
+        $msg_error = "le format du nom " . $_POST['rname'] . " n'est pas respecté";
+    }
+}else{
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire Robot</title>
+</head>
+
+<body>
+    <form action="" method="post">
+        <fieldset>
+            <legend>Usine de Robot</legend>
+            <p>Donne un nom au robot</p>
+            <label for="rname">Nom du Robot:</label>
+            <input type="text" id="rname" name="rname" placeholder="CX-1234">
+            <?php if (isset($msg_error)) : ?>
+                <span style="color:red;"><?= $msg_error ?></span>
+            <?php endif ?>
+            <br />
+
+            <input type="radio" name="moralite" value="Gentille">
+            <label for="moralite">Gentille</label><br />
+
+            <input type="radio" name="moralite" value="Mechant_Tueur">
+            <label for="moralite">Mechant_Tueur</label><br />
+
+            <input type="radio" name="moralite" value="Adorable">
+            <label for="moralite">Adorable</label><br />
+            <button type="submit" name="bouton">Envoyer</button>
+        </fieldset>
+    </form><?php }?>
+    <!-- Syntaxe alternative -->
+    <?php if (isset($name)) : ?>
+        <p>Salut humain,je suis <?= $name ?> </p>
+        <?php endif ?> 
+        <!-- Syntaxe ternaire -->
+        <p><?= isset($Daydate) ? $Daydate : '' ?></p>
+        <p><?= isset($tirage) ? $tirage : '' ?> </p>
+        <p><?= isset($comedie) ? $comedie : '' ?></p>
+        <!-- Syntaxe alternative -->
+    <?php if (isset($moralite)) : ?>
+        <p> <?= $moralite ?> </p>
+    <?php endif ?>
+
+
+</body>
+
+</html>

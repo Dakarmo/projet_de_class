@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <form action="" method = "post">
+        <label for="fname"> Nom : </label>
+        <input type="text" name="fname"id = "fname"><br>
+        <label for="lname"> Prenom : </label>
+        <input type="text" name="lname"id = "lname"><br>
+        <label for="id_user"> Identifiant :  </label>
+        <input type="text" name="id_user"id = "id_user" ><br>
+        <label for="pwd"> Mot de pass : </label>
+        <input type="password" name="pwd"id = "pwd"><br>
+        <label for="pwd"> Confirmer le mot de pass : </label>
+        <input type="password" name="cpwd" id = "cpwd"><br>
+        <input type="submit" name="inscription" id = "inscription" value = "s'inscrire">
+    </form>
+    </div>
+    <div>
+        <?php if(isset($users)): ?>
+            <table>
+                <tr>
+                    <th>N°</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Pseudo</th>
+                    <th colspan="2"></th>
+                    
+                </tr>
+                <?php foreach($users as $key=>$values): ?>
+                    <tr>
+                        <td><?=$num++ ?></td>
+                        <td><?=$values['Nom'] ?></td>
+                        <td><?=$values['Prenoms'] ?></td>
+                        <td><?=$values['Identifiant'] ?></td>
+                        <td><button>Edit</button></td>
+                        <td><button  style="background-color:brown; color:white;"><a href="index.php?page=delete&id=<?=$values['Id']?>">Delete</a></button></td>
+                    </tr>
+                <?php endforeach ?>
+            </table>
+
+        <?php endif ?>
+    </div>
+</body>
+</html>

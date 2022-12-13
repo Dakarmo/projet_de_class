@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon ROBOT</title>
+</head>
+<body>
+<form method='post' action='<?php echo $_SERVER['PHP_SELF'];?>'>
+<fieldset>
+<legend>Mon ROBOT</legend>
+    <label for='NameRobot'>Quel Nom voudriez vous donner à votre ROBOT<label>
+    <input type='text' name='NameRobot' id='NameRobot' placeholder='exemple: DX-7623'>
+    <input type='submit' value='Submit'>
+    </fieldset>
+    </form>
+
+
+    
+
+</body>
+</html>
+
+<?php
+$NameRobot = chr(rand(65, 90)).chr(rand(65, 90))."-".str_pad(rand(0, 99), 4, rand(0, 9), STR_PAD_BOTH );
+$Nombre= rand(1,9);
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // collect value of input field
+  $name = $_POST['NameRobot'];
+  if (empty($name)) {
+    echo "<br> Bonjour ! je suis ".$NameRobot;
+  } else {
+    echo "<br> Bonjour ! je suis ". $name;
+  }
+}
+
+if($Nombre%2===0){
+    echo "<br> J'ai choisi {$Nombre}. C'\'est un nombre pair";
+}else{
+    echo "<br> J'ai choisi {$Nombre}. C'\'est un nombre impair";
+}
+?>

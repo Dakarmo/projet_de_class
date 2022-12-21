@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello</h1>
+    <!-- <button onclick="getdata()">Click me</button>
+    <button onclick="getuser()">Click on me</button> -->
+    <button onclick="getsomething()">send it</button>
+    <div id="result"></div>
+    
+    <script>
+    //     function getdata()
+    //     {
+    //     fetch('https://jsonplaceholder.typicode.com/users')
+    //     .then(response=>response.json())
+    //     .then(response=>{
+    //         response.forEach(element => {
+    //             document.getElementById('result').innerHTML+=`<li>Nom:${element.name} Email:${element.email}</li>`;
+    //         });
+            
+    //     })
+    // }
+    // async function getuser()
+    // {
+    //     console.log('Demarage')
+    //     console.log('recherche des donnees')
+    //     console.time('search')
+    //     let users = await fetch('https://jsonplaceholder.typicode.com/users');
+    //     console.timeEnd('search')
+    //     console.log('donnees trouver')
+    //     console.time('convert')
+    //     let response= await users.json();
+    //     console.timeEnd('convert')
+    //     console.log('donnees converties')
+    //     response.forEach(element => {
+    //             document.getElementById('result').innerHTML+=`<li>Nom:${element.name} Email:${element.email}</li>`;
+    //         });
+    // }
+    // function sendData()
+    // {
+    //     let data={
+    //         Name:"John",
+    //         Email:"john@gmail.com"
+    //     }
+    //     data =JSON.stringify(data);
+    //     const option={
+    //         headers:{ "Content-Type" : "application/json" },
+    //         body:data,
+    //         method:"POST"
+    //     }
+    //     fetch('https://jsonplaceholder.typicode.com/posts',option)
+    // }
+    async function getsomething()
+    {
+        return new Promise((resolve,reject)=>{
+            let something=fetch('https://jsonplaceholder.typicode.com/users');
+            if(!something ){
+                reject('error');
+            }else{
+                resolve('ok');
+            }
+          
+
+        })
+    }
+    </script>
+</body>
+</html>
